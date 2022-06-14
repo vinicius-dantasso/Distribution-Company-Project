@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include <cctype>
 using namespace std;
 
 struct Storage {

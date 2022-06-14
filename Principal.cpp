@@ -132,14 +132,16 @@ int main() {
 
 	}
 
-	fout.open("armazem.dat", ios_base::out | ios_base::binary);// Abertura/Criação do arquivo binário que guardará as informações do vetor estoque
-	fout.write((char*)&size, sizeof(unsigned short));
-	fout.write((char*)&val, sizeof(unsigned short));
-	fout.write((char*)&n, sizeof(unsigned short));
+	if (size != 0) {
+		fout.open("armazem.dat", ios_base::out | ios_base::binary);// Abertura/Criação do arquivo binário que guardará as informações do vetor estoque
+		fout.write((char*)&size, sizeof(unsigned short));
+		fout.write((char*)&val, sizeof(unsigned short));
+		fout.write((char*)&n, sizeof(unsigned short));
 
-	for (int i = 0; i < size; i++) {
-		fout.write((char*)&ptrEstoque[i].gaveta, sizeof(ptrEstoque[i].gaveta));
+		for (int i = 0; i < size; i++) {
+			fout.write((char*)&ptrEstoque[i].gaveta, sizeof(ptrEstoque[i].gaveta));
+		}
+		fout.close();
+		delete[] ptrEstoque;
 	}
-	fout.close();
-	delete[] ptrEstoque;
 }
